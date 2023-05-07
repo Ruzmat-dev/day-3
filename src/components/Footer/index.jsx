@@ -1,12 +1,19 @@
 import React from 'react';
 import "./style.scss";
-const index = () => {
+import { lang } from '../../lang';
+
+const index = ({them , langes}) => {
+
+  const t = lang[langes]
+
+  console.log[langes];
+
    return (
       <>
-<footer className="text-center text-lg-start bg-primary text-dark">
+<footer className={`text-center text-lg-start  text-light  ${them==='Light' ? "bg-primary" : "dark-mode"}`}>
   <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <div className="me-5 d-none d-lg-block">
-      <span>Get connected with us on social networks:</span>
+      <span>{t.GetConnect}</span>
     </div>
     <div>
       <a href="" className="me-4 text-reset">

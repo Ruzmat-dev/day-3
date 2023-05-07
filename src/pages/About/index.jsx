@@ -13,6 +13,8 @@ const index = () => {
     valueIn.current.value
    }
 
+   console.log("render about page");
+
    return (
       <>
          <div className="container">

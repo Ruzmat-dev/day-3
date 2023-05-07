@@ -1,11 +1,18 @@
 import React from 'react';
 import "./style.scss";
-import { NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import { lang } from '../../lang';
 
-const index = () => {
+const index = ({them , setThem , setLanges , langes}) => {
+   
+   console.log(langes);
+   console.log(lang[langes]);
+
+   const t = lang[langes]
+
    return (
       <>
-         <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+         <nav className={`navbar navbar-expand-lg navbar-light  ${them==='Light' ? "bg-primary" : "dark-mode"} `} >
             <div className="container-fluid">
                <button
                   className="navbar-toggler"
@@ -30,13 +37,13 @@ const index = () => {
                   </a>
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                      <li className="nav-item">
-                        <a className="nav-link" href="#">Dashboard</a>
+                        <a className="nav-link" href="#">{t.dashboard}</a>
                      </li>
                      <li className="nav-item">
-                        <NavLink className="nav-link" to="/" >Home</NavLink>
+                        <NavLink className="nav-link" to="/" >{t.home}</NavLink>
                      </li>
                      <li className="nav-item">
-                        <NavLink className="nav-link" to="/about">About</NavLink>
+                        <NavLink className="nav-link" to="/about">{t.about}</NavLink>
                      </li>
                   </ul>
                </div>
@@ -63,13 +70,64 @@ const index = () => {
                         aria-labevlledby="navbarDropdownMenuLink"
                      >
                         <li>
-                           <a className="dropdown-item" href="#">Some news</a>
+                           <a className="dropdown-item" href="#">{t.someNews}</a>
                         </li>
                         <li>
-                           <a className="dropdown-item" href="#">Another news</a>
+                           <a className="dropdown-item" href="#">{t.anotherNews}</a>
                         </li>
                         <li>
-                           <a className="dropdown-item" href="#">Something else here</a>
+                           <a className="dropdown-item" href="#">{t.somethingElseHere}</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div className="dropdown">
+                     <a
+                        className="link-secondary me-3 dropdown-toggle hidden-arrow"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                     >
+
+                        <span>{t.languages}</span>
+                     </a>
+                     <ul
+                        className="dropdown-menu dropdown-menu-end"
+                        aria-labevlledby="navbarDropdownMenuLink"
+                     >
+                        <li>
+                           <a className="dropdown-item" href="#" onClick={(e) => {setLanges("uz") , localStorage.setItem("langs" , "uz")}} >UZ</a>
+                        </li>
+                        <li>
+                           <a className="dropdown-item" onClick={(e) => {setLanges("en" , localStorage.setItem("langes" , "en"))}} href="#">EN</a>
+                        </li>
+                        <li>
+                           <a className="dropdown-item" href="#">RU</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div className="dropdown">
+                     <a
+                        className="link-secondary me-3 dropdown-toggle hidden-arrow"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                     >
+
+                        <span>light/dark</span>
+                     </a>
+                     <ul
+                        className="dropdown-menu dropdown-menu-end"
+                        aria-labevlledby="navbarDropdownMenuLink"
+                     >
+                        <li>
+                           <a className="dropdown-item" href="#" onClick={(e)=> {setThem("Light") , localStorage.setItem("them" , "Light")}}>{t.light}</a>
+                        </li>
+                        <li>
+                           <a className="dropdown-item" href="#" onClick={(e)=> {setThem("D") , localStorage.setItem("them" , "D")}}>{t.dark}</a>
                         </li>
                      </ul>
                   </div>
@@ -95,13 +153,13 @@ const index = () => {
                         aria-labelledby="navbarDropdownMenuAvatar"
                      >
                         <li>
-                           <a className="dropdown-item" href="#">My profile</a>
+                           <NavLink className="dropdown-item" to="/user">{t.myProfile}</NavLink>
                         </li>
                         <li>
-                           <a className="dropdown-item" href="#">Settings</a>
+                           <a className="dropdown-item" href="#">{t.settings}</a>
                         </li>
                         <li>
-                           <a className="dropdown-item" href="#">Logout</a>
+                           <a className="dropdown-item" href="#">{t.logout}</a>
                         </li>
                      </ul>
                   </div>
